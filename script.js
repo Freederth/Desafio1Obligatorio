@@ -47,10 +47,10 @@ function compra(stock, nombre, precio) {
   );
   if (cantidadComprada <= stock) {
     stockSuficiente(stock, nombre);
+    calcularPrecio(precio);
   } else {
     stockInsuficiente(stock);
   }
-  calcularPrecio(precio);
 }
 function comprarProductos() {
   let nombreCompra = prompt(
