@@ -1,7 +1,6 @@
 let cantidadComprada;
 let precioTotalVenta = 0;
 
-// sí, sí, sí, ya sé que no debería, pero no puedo evitar usar vectores, estructuras u objetos
 function Producto(nombre, precio, stock) {
   this.nombre = nombre;
   this.precio = precio;
@@ -12,6 +11,9 @@ const producto1 = new Producto("perro cachorro", 12000, 10);
 const producto2 = new Producto("perro adulto", 18000, 15);
 const producto3 = new Producto("gato cachorro", 17000, 8);
 const producto4 = new Producto("gato adulto", 20000, 12);
+
+const listaProductos = [producto1, producto2, producto3, producto4];
+const carrito = [];
 
 function listadoProductos() {
   alert(
@@ -38,7 +40,9 @@ function stockSuficiente(stock, nombre) {
 }
 
 function calcularPrecio(precio) {
-  precioTotalVenta += cantidadComprada * precio;
+  carrito.push(cantidadComprada * precio);
+  precioTotalVenta = carrito.reduce((partialSum, a) => partialSum + a, 0);
+  //console.log("por ahora, te sale: " + precioTotalVenta);
 }
 
 function compra(stock, nombre, precio) {
@@ -79,3 +83,4 @@ for (let i = 0; i < cantidadProductosComprados; i++) {
   listadoProductos();
   comprarProductos();
 }
+console.log(carrito);
